@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "remove-old-build": "rm -rf ../main/resources/public/* ",
-    "move-build": "mkdir -p ../main/resources/public && mv build/* ../main/resources/public/",
+    "remove-old-build": "rm -rf ../main/resources/static/* ",
+    "move-build": "mkdir -p ../main/resources/static && mv build/* ../main/resources/static/",
     "remove-new-build": "rm -rf build",
     "postbuild": "npm run remove-old-build && npm run move-build && npm run remove-new-build"
   },
