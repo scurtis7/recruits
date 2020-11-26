@@ -5,18 +5,6 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -37,7 +25,7 @@ out/
 .vscode/
 
 ### Miscellaneous ###
-main/resources/application-dev.yml
+src/main/resources/application-dev.yml
 
 
 ###############################
@@ -51,7 +39,7 @@ main/resources/application-dev.yml
 /bazel-out
 
 # dependencies
-/node_modules
+/webapp/node_modules
 
 # profiling files
 chrome-profiler-events*.json
