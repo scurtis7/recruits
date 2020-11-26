@@ -66,4 +66,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Normally I would ignore the compiled client app
+# but I need it to be deployed in Heroku for now
 #/src/main/resources/static
