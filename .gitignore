@@ -66,4 +66,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/src/main/resources/static
+#/src/main/resources/static
