@@ -289,12 +289,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class CollegeService {
-    constructor(http) {
-        this.http = http;
+    constructor(httpClient) {
+        this.httpClient = httpClient;
         this.baseUrl = 'colleges';
     }
     getAllColleges() {
-        return this.http.get(this.baseUrl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getAllColleges`)));
+        return this.httpClient.get(this.baseUrl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getAllColleges`)));
     }
     /**
      * Handle Http operation that failed.
@@ -343,18 +343,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class ScraperService {
-    constructor(http) {
-        this.http = http;
+    constructor(httpClient) {
+        this.httpClient = httpClient;
         this.baseUrl = 'scrape/247';
     }
     scrape(college, year) {
+        // todo: remove this line of code
+        college = "FSU";
+        // todo: remove this line of code
         const url = `${this.baseUrl}/${college}/${year}`;
         console.log('scrape url -> ' + url);
-        return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`Season: ${year}`)));
+        return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`Season: ${year}`)));
     }
     getPlayers() {
         const url = `/recruit`;
-        return this.http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getPlayers`)));
+        return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getPlayers`)));
     }
     /**
      * Handle Http operation that failed.

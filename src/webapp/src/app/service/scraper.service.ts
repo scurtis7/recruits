@@ -11,20 +11,23 @@ export class ScraperService {
 
   private baseUrl = 'scrape/247';
 
-  constructor(private http: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   scrape(college: string, year: string): Observable<Player247[]> {
+    // todo: remove this line of code
+    college = "FSU";
+    // todo: remove this line of code
     const url = `${this.baseUrl}/${college}/${year}`;
     console.log('scrape url -> ' + url);
-    return this.http.get<Player247[]>(url).pipe(
+    return this.httpClient.get<Player247[]>(url).pipe(
       catchError(this.handleError<Player247[]>(`Season: ${year}`))
     );
   }
 
   getPlayers(): Observable<Player247[]> {
     const url = `/recruit`;
-    return this.http.get<Player247[]>(url).pipe(
+    return this.httpClient.get<Player247[]>(url).pipe(
       catchError(this.handleError<Player247[]>(`getPlayers`))
     );
   }

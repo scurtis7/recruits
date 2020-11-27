@@ -11,11 +11,11 @@ export class CollegeService {
 
   private baseUrl = 'colleges';
 
-  constructor(private http: HttpClient) {
+  constructor(private httpClient: HttpClient) {
   }
 
   getAllColleges(): Observable<College[]> {
-    return this.http.get<College[]>(this.baseUrl).pipe(
+    return this.httpClient.get<College[]>(this.baseUrl).pipe(
       catchError(this.handleError<College[]>(`getAllColleges`))
     );
   }
