@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Player247 } from '../../model/player247';
 import { College } from '../../model/college';
 import { ScraperService } from '../../service/scraper.service';
@@ -11,7 +12,8 @@ import { CollegeService } from '../../service/college.service';
 })
 export class ScrapeComponent implements OnInit {
 
-  players: Player247[] = [];
+  displayedColumns: string[] = ['year', 'name', 'position', 'height', 'weight', 'compositeRank', 'rankNational', 'rankPosition', 'rankState', 'stars'];
+  dataSource = new MatTableDataSource<Player247>();
   colleges: College[] = [];
 
   constructor(private scraperService: ScraperService, private collegeService: CollegeService) {
@@ -41,7 +43,7 @@ export class ScrapeComponent implements OnInit {
     console.log('Scrape 247 Season: college -> ' + college + '  year -> ' + year);
     this.scraperService.scrape(college, year)
       .subscribe(result => {
-        this.players = result;
+        this.dataSource = new MatTableDataSource(result);
       });
   }
 
