@@ -9,7 +9,7 @@ import { Player247 } from '../model/player247';
 })
 export class ScraperService {
 
-  private baseUrl = 'scrape/247';
+  private baseUrl = 'api/scrape';
 
   constructor(private httpClient: HttpClient) {
   }

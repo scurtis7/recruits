@@ -9,7 +9,7 @@ import { College } from '../model/college';
 })
 export class CollegeService {
 
-  private baseUrl = 'colleges';
+  private baseUrl = 'api/colleges';
 
   constructor(private httpClient: HttpClient) {
   }

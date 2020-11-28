@@ -17,7 +17,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/scrape/247")
+@RequestMapping(value = "/api/scrape")
 public class ScraperController {
 
     @GetMapping("/{college}/{year}")

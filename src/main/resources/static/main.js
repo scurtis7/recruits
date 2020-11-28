@@ -291,7 +291,7 @@ __webpack_require__.r(__webpack_exports__);
 class CollegeService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        this.baseUrl = 'colleges';
+        this.baseUrl = 'api/colleges';
     }
     getAllColleges() {
         return this.httpClient.get(this.baseUrl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getAllColleges`)));
@@ -345,7 +345,7 @@ __webpack_require__.r(__webpack_exports__);
 class ScraperService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        this.baseUrl = 'scrape/247';
+        this.baseUrl = 'api/scrape';
     }
     scrape(college, year) {
         const url = `${this.baseUrl}/${college}/${year}`;
