@@ -15,9 +15,6 @@ export class ScraperService {
   }
 
   scrape(college: string, year: string): Observable<Player247[]> {
-    // todo: remove this line of code
-    college = "FSU";
-    // todo: remove this line of code
     const url = `${this.baseUrl}/${college}/${year}`;
     console.log('scrape url -> ' + url);
     return this.httpClient.get<Player247[]>(url).pipe(

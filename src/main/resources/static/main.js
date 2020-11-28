@@ -348,9 +348,6 @@ class ScraperService {
         this.baseUrl = 'scrape/247';
     }
     scrape(college, year) {
-        // todo: remove this line of code
-        college = "FSU";
-        // todo: remove this line of code
         const url = `${this.baseUrl}/${college}/${year}`;
         console.log('scrape url -> ' + url);
         return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`Season: ${year}`)));
