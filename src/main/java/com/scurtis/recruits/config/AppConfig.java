@@ -1,5 +1,7 @@
 package com.scurtis.recruits.config;
 
+import com.scurtis.recruits.dto.CollegeRepository;
+import com.scurtis.recruits.storage.CollegeDataAccess;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +23,11 @@ public class AppConfig {
                 .username(postgresJdbcProperties.getUsername())
                 .password(postgresJdbcProperties.getPassword())
                 .build();
+    }
+
+    @Bean
+    public CollegeDataAccess collegeDataAccess(CollegeRepository repository) {
+        return new CollegeDataAccess(repository);
     }
 
 }
