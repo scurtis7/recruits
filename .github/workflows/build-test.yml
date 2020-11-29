@@ -20,4 +20,6 @@ jobs:
           java-version: 1.8
       - name: Clean, Build & Test
         run: ./gradlew clean build
+      - name: Integration Tests
+        run: ./gradlew cucumber
 
