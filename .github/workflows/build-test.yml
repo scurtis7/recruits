@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Build & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -18,6 +18,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build & Test
+      - name: Clean, Build & Test
         run: ./gradlew clean build
 
