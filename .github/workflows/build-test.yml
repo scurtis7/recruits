@@ -18,8 +18,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Clean, Build & Test
-        run: ./gradlew clean build
+      - name: Build & Test
+        run: ./gradlew build test
       - name: Integration Tests
         run: ./gradlew cucumber
 
