@@ -41,7 +41,7 @@ test {
 	useJUnitPlatform()
 }
 
-task cucumber() {
+task integTest() {
     dependsOn assemble, testClasses
     doLast {
         javaexec {
