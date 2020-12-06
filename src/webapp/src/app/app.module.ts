@@ -12,6 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { SigninComponent } from './components/login/signin/signin.component';
 import { PlayersComponent } from './components/players/players.component';
 import { ScrapeComponent } from './components/scrape/scrape.component';
+import { SignupComponent } from './components/login/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ScrapeComponent } from './components/scrape/scrape.component';
     SigninComponent,
     PlayersComponent,
     ScrapeComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
