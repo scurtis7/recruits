@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { PlayersComponent } from './components/players/players.component';
 import { ScrapeComponent } from './components/scrape/scrape.component';
 import { AboutComponent } from './components/about/about.component';
-import { SigninComponent } from './components/signin/signin.component';
+import { SigninComponent } from './components/login/signin/signin.component';
 
 const routes: Routes = [
   {path: 'players', component: PlayersComponent},

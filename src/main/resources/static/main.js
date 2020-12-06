@@ -568,10 +568,98 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
 
 /***/ }),
 
-/***/ "WnTk":
-/*!*******************************************************!*\
-  !*** ./src/app/components/signin/signin.component.ts ***!
-  \*******************************************************/
+/***/ "ZAI4":
+/*!*******************************!*\
+  !*** ./src/app/app.module.ts ***!
+  \*******************************/
+/*! exports provided: AppModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "jhN1");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-routing.module */ "vY5A");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "Sy1n");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
+/* harmony import */ var _service_scraper_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./service/scraper.service */ "QTQy");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "R1ws");
+/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/sort */ "Dh3D");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/table */ "+0xr");
+/* harmony import */ var _components_about_about_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/about/about.component */ "+DhY");
+/* harmony import */ var _components_login_signin_signin_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/login/signin/signin.component */ "an7d");
+/* harmony import */ var _components_players_players_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/players/players.component */ "qoZx");
+/* harmony import */ var _components_scrape_scrape_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/scrape/scrape.component */ "IAzH");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class AppModule {
+}
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [
+        _service_scraper_service__WEBPACK_IMPORTED_MODULE_5__["ScraperService"]
+    ], imports: [[
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
+            _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSortModule"],
+            _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableModule"]
+        ]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+        _components_about_about_component__WEBPACK_IMPORTED_MODULE_9__["AboutComponent"],
+        _components_login_signin_signin_component__WEBPACK_IMPORTED_MODULE_10__["SigninComponent"],
+        _components_players_players_component__WEBPACK_IMPORTED_MODULE_11__["PlayersComponent"],
+        _components_scrape_scrape_component__WEBPACK_IMPORTED_MODULE_12__["ScrapeComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
+        _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSortModule"],
+        _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+                declarations: [
+                    _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+                    _components_about_about_component__WEBPACK_IMPORTED_MODULE_9__["AboutComponent"],
+                    _components_login_signin_signin_component__WEBPACK_IMPORTED_MODULE_10__["SigninComponent"],
+                    _components_players_players_component__WEBPACK_IMPORTED_MODULE_11__["PlayersComponent"],
+                    _components_scrape_scrape_component__WEBPACK_IMPORTED_MODULE_12__["ScrapeComponent"],
+                ],
+                imports: [
+                    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+                    _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+                    _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                    _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
+                    _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSortModule"],
+                    _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableModule"]
+                ],
+                providers: [
+                    _service_scraper_service__WEBPACK_IMPORTED_MODULE_5__["ScraperService"]
+                ],
+                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+            }]
+    }], null, null); })();
+
+
+/***/ }),
+
+/***/ "an7d":
+/*!*************************************************************!*\
+  !*** ./src/app/components/login/signin/signin.component.ts ***!
+  \*************************************************************/
 /*! exports provided: SigninComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -604,94 +692,6 @@ SigninComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
                 styleUrls: ['./signin.component.css']
             }]
     }], function () { return []; }, null); })();
-
-
-/***/ }),
-
-/***/ "ZAI4":
-/*!*******************************!*\
-  !*** ./src/app/app.module.ts ***!
-  \*******************************/
-/*! exports provided: AppModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "jhN1");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-routing.module */ "vY5A");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "Sy1n");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-/* harmony import */ var _service_scraper_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./service/scraper.service */ "QTQy");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "R1ws");
-/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/sort */ "Dh3D");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/table */ "+0xr");
-/* harmony import */ var _components_about_about_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/about/about.component */ "+DhY");
-/* harmony import */ var _components_signin_signin_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/signin/signin.component */ "WnTk");
-/* harmony import */ var _components_players_players_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/players/players.component */ "qoZx");
-/* harmony import */ var _components_scrape_scrape_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/scrape/scrape.component */ "IAzH");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class AppModule {
-}
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(); }, providers: [
-        _service_scraper_service__WEBPACK_IMPORTED_MODULE_5__["ScraperService"]
-    ], imports: [[
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
-            _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSortModule"],
-            _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableModule"]
-        ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-        _components_about_about_component__WEBPACK_IMPORTED_MODULE_9__["AboutComponent"],
-        _components_signin_signin_component__WEBPACK_IMPORTED_MODULE_10__["SigninComponent"],
-        _components_players_players_component__WEBPACK_IMPORTED_MODULE_11__["PlayersComponent"],
-        _components_scrape_scrape_component__WEBPACK_IMPORTED_MODULE_12__["ScrapeComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-        _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
-        _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-        _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
-        _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSortModule"],
-        _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableModule"]] }); })();
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
-        args: [{
-                declarations: [
-                    _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
-                    _components_about_about_component__WEBPACK_IMPORTED_MODULE_9__["AboutComponent"],
-                    _components_signin_signin_component__WEBPACK_IMPORTED_MODULE_10__["SigninComponent"],
-                    _components_players_players_component__WEBPACK_IMPORTED_MODULE_11__["PlayersComponent"],
-                    _components_scrape_scrape_component__WEBPACK_IMPORTED_MODULE_12__["ScrapeComponent"],
-                ],
-                imports: [
-                    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                    _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
-                    _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-                    _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
-                    _angular_material_sort__WEBPACK_IMPORTED_MODULE_7__["MatSortModule"],
-                    _angular_material_table__WEBPACK_IMPORTED_MODULE_8__["MatTableModule"]
-                ],
-                providers: [
-                    _service_scraper_service__WEBPACK_IMPORTED_MODULE_5__["ScraperService"]
-                ],
-                bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
-            }]
-    }], null, null); })();
 
 
 /***/ }),
@@ -976,7 +976,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_players_players_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/players/players.component */ "qoZx");
 /* harmony import */ var _components_scrape_scrape_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/scrape/scrape.component */ "IAzH");
 /* harmony import */ var _components_about_about_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/about/about.component */ "+DhY");
-/* harmony import */ var _components_signin_signin_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/signin/signin.component */ "WnTk");
+/* harmony import */ var _components_login_signin_signin_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/login/signin/signin.component */ "an7d");
 
 
 
@@ -989,7 +989,7 @@ const routes = [
     { path: 'players', component: _components_players_players_component__WEBPACK_IMPORTED_MODULE_2__["PlayersComponent"] },
     { path: 'scrape', component: _components_scrape_scrape_component__WEBPACK_IMPORTED_MODULE_3__["ScrapeComponent"] },
     { path: 'about', component: _components_about_about_component__WEBPACK_IMPORTED_MODULE_4__["AboutComponent"] },
-    { path: 'signin', component: _components_signin_signin_component__WEBPACK_IMPORTED_MODULE_5__["SigninComponent"] }
+    { path: 'signin', component: _components_login_signin_signin_component__WEBPACK_IMPORTED_MODULE_5__["SigninComponent"] }
 ];
 class AppRoutingModule {
 }

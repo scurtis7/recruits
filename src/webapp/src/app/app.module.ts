@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { AboutComponent } from './components/about/about.component';
-import { SigninComponent } from './components/signin/signin.component';
+import { SigninComponent } from './components/login/signin/signin.component';
 import { PlayersComponent } from './components/players/players.component';
 import { ScrapeComponent } from './components/scrape/scrape.component';
 
