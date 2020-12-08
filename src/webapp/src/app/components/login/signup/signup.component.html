@@ -12,34 +12,44 @@
   <div class="row">
     <div class="col">
       <label>
-        <input type="text" class="form-control" placeholder="Name" #name>
+        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="name">
       </label>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <label>
-        <input type="text" class="form-control" placeholder="Username" #username>
+        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username">
       </label>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <label>
-        <input type="password" class="form-control" placeholder="Password" #password>
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password">
       </label>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <label>
-        <input type="password" class="form-control" placeholder="Confirm Password" #password2>
+        <input type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="password2" (keyup)="validatePassword()">
       </label>
+    </div>
+  </div>
+  <div class="row" *ngIf="passwordsDontMatch">
+    <div class="col">
+      <span class="error-message">Passwords do not match</span>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <button type="button" title="CreateAcct" class="btn btn-primary">
+      <span class="error-message">&nbsp;</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" title="CreateAcct" class="btn btn-primary" (click)="createAccount()">
         Create Account
       </button>
     </div>

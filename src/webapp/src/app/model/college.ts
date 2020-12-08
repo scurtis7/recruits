@@ -1,5 +1,11 @@
 export class College {
 
+  id: number;
+  siteName: string;
+  displayName: string;
+  conference: string;
+  division: string;
+
   constructor(id: number, siteName: string, displayName: string, conference: string, division: string) {
     this.id = id;
     this.siteName = siteName;
@@ -7,11 +13,5 @@ export class College {
     this.conference = conference;
     this.division = division;
   }
-
-  id: number;
-  siteName: string;
-  displayName: string;
-  conference: string;
-  division: string;
 
 }

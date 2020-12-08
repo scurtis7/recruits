@@ -13,6 +13,7 @@ import { SigninComponent } from './components/login/signin/signin.component';
 import { PlayersComponent } from './components/players/players.component';
 import { ScrapeComponent } from './components/scrape/scrape.component';
 import { SignupComponent } from './components/login/signup/signup.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,15 @@ import { SignupComponent } from './components/login/signup/signup.component';
     ScrapeComponent,
     SignupComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatSortModule,
-    MatTableModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatSortModule,
+        MatTableModule,
+        FormsModule
+    ],
   providers: [
     ScraperService
   ],
