@@ -13,13 +13,13 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "user-accounts")
-public class UserAccount {
+@Table(name = "site_user")
+public class SiteUser {
 
     @Id
     private Integer id;
-    private String name;
+    private String fullName;
     private String username;
     private String password;
-
+    private Role role;
 }

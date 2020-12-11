@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Date: Dec 07, 2020
  **/
 
-public interface UserAccountRepository extends JpaRepository<UserAccount, Integer> {
+public interface UserAccountRepository extends JpaRepository<SiteUser, Integer> {
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../service/user.service';
+import { SiteUser } from '../../../model/site-user';
 
 @Component({
   selector: 'app-signup',
@@ -13,13 +15,16 @@ export class SignupComponent implements OnInit {
   password2 = '';
   passwordsDontMatch = false;
 
-  constructor() { }
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
   }
 
   createAccount(): void {
     console.log('name:' + this.name + '   username:' + this.username + '   password:' + this.password + '   password2:' + this.password2);
+    this.userService.createUser(
+      {fullName: this.name, username: this.username, password: this.password}
+    );
   }
 
   validatePassword(): void {
