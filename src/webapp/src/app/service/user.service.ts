@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { Player247 } from '../model/player247';
 import { catchError } from 'rxjs/operators';
 import { SiteUser } from '../model/site-user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +18,21 @@ export class UserService {
     })
   };
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
   }
 
-  createUser(user: SiteUser): Observable<any> {
-    const url = `${this.baseUrl}`;
-    console.log('createUser url -> ' + url);
-    return this.httpClient.post(url, user, this.httpOptions).pipe(
-      catchError(this.handleError('createUser', user))
-    );
+  createUser(user: SiteUser): void {
+    console.log('createUser url -> ' + this.baseUrl);
+    this.httpClient.post<SiteUser>(this.baseUrl, user, this.httpOptions)
+      .subscribe({
+        next: response => {
+          console.log('Site User Created: ' + response.fullName);
+          this.router.navigate(['/signin']);
+        },
+        error: error => {
+          console.error('There was an error!', error);
+        }
+      });
   }
 
   /**

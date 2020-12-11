@@ -20,11 +20,9 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createAccount(): void {
+  createSiteUser(): void {
     console.log('name:' + this.name + '   username:' + this.username + '   password:' + this.password + '   password2:' + this.password2);
-    this.userService.createUser(
-      {fullName: this.name, username: this.username, password: this.password}
-    );
+    this.userService.createUser(new SiteUser(this.name, this.username, this.password));
   }
 
   validatePassword(): void {
