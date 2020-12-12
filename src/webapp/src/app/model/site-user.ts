@@ -1,11 +1,11 @@
 export class SiteUser {
 
-  fullName: string;
+  fullname: string;
   username: string;
   password: string;
 
-  constructor(fullName: string, username: string, password: string) {
-    this.fullName = fullName;
+  constructor(fullname: string, username: string, password: string) {
+    this.fullname = fullname;
     this.username = username;
     this.password = password;
   }

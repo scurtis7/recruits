@@ -20,9 +20,9 @@ import javax.persistence.Table;
 public class SiteUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "site_user_id_seq")
     private Integer id;
-    private String fullName;
+    private String fullname;
     private String username;
     private String password;
     private Role role;

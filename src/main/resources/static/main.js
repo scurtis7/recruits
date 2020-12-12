@@ -418,7 +418,7 @@ class UserService {
         this.httpClient.post(this.baseUrl, user, this.httpOptions)
             .subscribe({
             next: response => {
-                console.log('Site User Created: ' + response.fullName);
+                console.log('Site User Created: ' + response.fullname);
                 this.router.navigate(['/signin']);
             },
             error: error => {
@@ -1163,8 +1163,8 @@ AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SiteUser", function() { return SiteUser; });
 class SiteUser {
-    constructor(fullName, username, password) {
-        this.fullName = fullName;
+    constructor(fullname, username, password) {
+        this.fullname = fullname;
         this.username = username;
         this.password = password;
     }

@@ -17,9 +17,11 @@ public class UserAccountDataAccess {
     private final UserAccountRepository repository;
 
     public SiteUser saveUserAccount(SiteUser siteUser) {
-        // todo: decrypt username and password
-        // todo: hash the password
         return repository.save(siteUser);
     }
+
+//    public SiteUser findUserByUsername() {
+//        return repository.findOne()
+//    }
 
 }

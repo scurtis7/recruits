@@ -2,6 +2,7 @@ package com.scurtis.recruits.config;
 
 import com.scurtis.recruits.dto.CollegeRepository;
 import com.scurtis.recruits.dto.UserAccountRepository;
+import com.scurtis.recruits.service.PasswordManager;
 import com.scurtis.recruits.service.UserService;
 import com.scurtis.recruits.storage.CollegeDataAccess;
 import com.scurtis.recruits.storage.UserAccountDataAccess;
@@ -41,8 +42,13 @@ public class AppConfig {
     }
 
     @Bean
-    public UserService userService(UserAccountDataAccess dataAccess, PasswordEncoder encoder) {
-        return new UserService(dataAccess, encoder);
+    public UserService userService(UserAccountDataAccess dataAccess, PasswordManager passwordManager) {
+        return new UserService(dataAccess, passwordManager);
+    }
+
+    @Bean
+    public PasswordManager passwordManager(PasswordEncoder encoder) {
+        return new PasswordManager(encoder);
     }
 
     @Bean

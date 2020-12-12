@@ -26,7 +26,7 @@ export class UserService {
     this.httpClient.post<SiteUser>(this.baseUrl, user, this.httpOptions)
       .subscribe({
         next: response => {
-          console.log('Site User Created: ' + response.fullName);
+          console.log('Site User Created: ' + response.fullname);
           this.router.navigate(['/signin']);
         },
         error: error => {
