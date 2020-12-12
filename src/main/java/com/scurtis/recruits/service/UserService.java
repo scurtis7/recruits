@@ -19,12 +19,14 @@ public class UserService {
     private final PasswordManager passwordManager;
 
     public SiteUser saveUser(SiteUser siteUser) {
+        log.info("Saving user: " + siteUser.getUsername());
         String hashedPassword = passwordManager.getEncodedPassword(siteUser.getPassword());
         siteUser.setPassword(hashedPassword);
         siteUser.setRole(Role.GUEST);
         SiteUser user = dataAccess.saveUserAccount(siteUser);
         // secure the password by not returning it
         user.setPassword("");
+        log.info("User saved successfully");
         return user;
     }
 

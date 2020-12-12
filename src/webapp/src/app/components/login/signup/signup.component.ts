@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   password = '';
   password2 = '';
   passwordsDontMatch = false;
+  userAdded = false;
 
   constructor(private userService: UserService) {}
 
@@ -22,7 +23,11 @@ export class SignupComponent implements OnInit {
 
   createSiteUser(): void {
     console.log('name:' + this.name + '   username:' + this.username + '   password:' + this.password + '   password2:' + this.password2);
-    this.userService.createUser(new SiteUser(this.name, this.username, this.password));
+    const newUser = this.userService.createUser(new SiteUser(this.name, this.username, this.password));
+    if (newUser != null) {
+      console.log('User ' + newUser + ' created successfully');
+      this.userAdded = true;
+    }
   }
 
   validatePassword(): void {
