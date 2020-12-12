@@ -2,11 +2,14 @@ package com.scurtis.recruits.config;
 
 import com.scurtis.recruits.dto.CollegeRepository;
 import com.scurtis.recruits.dto.UserAccountRepository;
+import com.scurtis.recruits.service.UserService;
 import com.scurtis.recruits.storage.CollegeDataAccess;
 import com.scurtis.recruits.storage.UserAccountDataAccess;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -35,6 +38,16 @@ public class AppConfig {
     @Bean
     public UserAccountDataAccess userAccountDataAccess(UserAccountRepository repository) {
         return new UserAccountDataAccess(repository);
+    }
+
+    @Bean
+    public UserService userService(UserAccountDataAccess dataAccess, PasswordEncoder encoder) {
+        return new UserService(dataAccess, encoder);
+    }
+
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
     }
 
 }
