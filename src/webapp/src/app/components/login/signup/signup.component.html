@@ -42,6 +42,11 @@
       <span class="error-message">Passwords do not match</span>
     </div>
   </div>
+  <div class="row" *ngIf="displayErrorMsg">
+    <div class="col">
+      <span class="error-message">This username is already taken, please select another</span>
+    </div>
+  </div>
   <div class="row" *ngIf="userAdded">
     <div class="col">
       <span class="success-message">User {{username}} added successfully!&nbsp;&nbsp;&nbsp;You can now </span>

@@ -1,11 +1,11 @@
 package com.scurtis.recruits.config;
 
 import com.scurtis.recruits.dto.CollegeRepository;
-import com.scurtis.recruits.dto.UserAccountRepository;
+import com.scurtis.recruits.dto.SiteUserRepository;
 import com.scurtis.recruits.service.PasswordManager;
 import com.scurtis.recruits.service.UserService;
 import com.scurtis.recruits.storage.CollegeDataAccess;
-import com.scurtis.recruits.storage.UserAccountDataAccess;
+import com.scurtis.recruits.storage.SiteUserDataAccess;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,12 +37,12 @@ public class AppConfig {
     }
 
     @Bean
-    public UserAccountDataAccess userAccountDataAccess(UserAccountRepository repository) {
-        return new UserAccountDataAccess(repository);
+    public SiteUserDataAccess userAccountDataAccess(SiteUserRepository repository) {
+        return new SiteUserDataAccess(repository);
     }
 
     @Bean
-    public UserService userService(UserAccountDataAccess dataAccess, PasswordManager passwordManager) {
+    public UserService userService(SiteUserDataAccess dataAccess, PasswordManager passwordManager) {
         return new UserService(dataAccess, passwordManager);
     }
 
