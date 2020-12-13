@@ -44,7 +44,8 @@
   </div>
   <div class="row" *ngIf="userAdded">
     <div class="col">
-      <span class="error-message">User {{username}} added successfully!  You can login now.</span>
+      <span class="success-message">User {{username}} added successfully!&nbsp;&nbsp;&nbsp;You can now </span>
+      <button type="button" title="Login" class="btn btn-primary-outline" routerLink="/signin">Login</button>
     </div>
   </div>
   <div class="row">

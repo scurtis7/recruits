@@ -22,6 +22,25 @@
   border-color: #3A4A4D;
 }
 
+.btn-primary-outline {
+  color: #cfd8dc;
+}
+
+.btn-primary-outline:hover,
+.btn-primary-outline:active,
+.btn-primary-outline:focus,
+.btn-primary-outline:active:focus {
+  background-color: #cfd8dc !important;
+  color: #3A4A4D;
+  border-color: #3A4A4D;
+}
+
+.success-message {
+  color: #9de1fe;
+  font-weight: bold;
+  font-size: medium;
+}
+
 .error-message {
   color: #EC7063;
 }
