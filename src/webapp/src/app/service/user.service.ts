@@ -24,17 +24,6 @@ export class UserService {
     return this.httpClient.post<SiteUser>(this.baseUrl, user, this.httpOptions);
       // .pipe();
 
-
-    // return this.httpClient.post<SiteUser>(this.baseUrl, user, this.httpOptions)
-    //   .subscribe({
-    //     next: retUser => {
-    //       console.log('Site User Created: ' + retUser.fullname);
-    //       return retUser;
-    //     },
-    //     error: error => {
-    //       this.handleError(error);
-    //     }
-    //   });
   }
 
   /**
