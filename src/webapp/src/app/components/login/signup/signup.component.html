@@ -1,0 +1,90 @@
+<div class="div-main-layout">
+  <div class="row">
+    <div class="col">
+      <h1><span class="badge badge-info">College Recruits</span></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3><span class="badge badge-info">Create Account</span></h3>
+    </div>
+  </div>
+
+  <!-- fullname -->
+  <div class="row">
+    <div class="col">
+      <label>
+        <input type="text" class="form-control" placeholder="Name" [(ngModel)]="fullname" (blur)="validateFullname()">
+      </label>
+    </div>
+  </div>
+  <div class="row" *ngIf="fullnameError">
+    <div class="col">
+      <span class="error-message">{{fullnameErrorMsg}}</span>
+    </div>
+  </div>
+
+  <!-- username -->
+  <div class="row">
+    <div class="col">
+      <label>
+        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username"
+               (blur)="validateUsername()">
+      </label>
+    </div>
+  </div>
+  <div class="row" *ngIf="usernameError">
+    <div class="col">
+      <span class="error-message">{{usernameErrorMsg}}</span>
+    </div>
+  </div>
+
+  <!-- password -->
+  <div class="row">
+    <div class="col">
+      <label>
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
+               (blur)="validatePassword()">
+      </label>
+    </div>
+  </div>
+  <div class="row" *ngIf="passwordError">
+    <div class="col">
+      <span class="error-message">{{passwordErrorMsg}}</span>
+    </div>
+  </div>
+
+  <!-- password2 -->
+  <div class="row">
+    <div class="col">
+      <label>
+        <input type="password" class="form-control" placeholder="Confirm Password" [(ngModel)]="password2"
+               (keyup)="validatePassword2()">
+      </label>
+    </div>
+  </div>
+  <div class="row" *ngIf="password2Error">
+    <div class="col">
+      <span class="error-message">{{password2ErrorMsg}}</span>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="userAdded">
+    <div class="col">
+      <span class="success-message">User {{username}} added successfully!&nbsp;&nbsp;&nbsp;You can now </span>
+      <button type="button" title="Login" class="btn btn-primary-outline" routerLink="/signin">Login</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span class="error-message">&nbsp;</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" title="CreateAcct" class="btn btn-primary" (click)="createSiteUser()">
+        Create Account
+      </button>
+    </div>
+  </div>
+</div>

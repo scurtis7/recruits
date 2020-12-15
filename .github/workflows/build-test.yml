@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - develop
-      - feature/*
+  pull_request:
 
 jobs:
   test:
@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Clean, Build & Test
+      - name: Clean & Build
         run: ./gradlew clean build
+      - name: Test
+        run: ./gradlew test -i
 
