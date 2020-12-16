@@ -17,35 +17,35 @@ class PasswordManagerTest {
     }
 
     @Test
-    void callToEncodePasswordReturnsNotNullResult() {
+    void encodePassword_ReturnsGoodResult() {
         String rawPassword = "ThePassword123!@#";
         String encodedPwd = passwordManager.getEncodedPassword(rawPassword);
         assertNotNull(encodedPwd);
     }
 
     @Test
-    void callToEncodePasswordWithEmptyStringReturnsNotNull() {
+    void encodePassword_WithEmptyString_ReturnsNotNull() {
         String rawPassword = "";
         String encodedPwd = passwordManager.getEncodedPassword(rawPassword);
         assertNotNull(encodedPwd);
     }
 
     @Test
-    void callToEncodePasswordWithLongStringReturnsNotNull() {
+    void encodePassword_WithLongString_ReturnsNotNull() {
         String rawPassword = "This is a really long string to do a test to encode a really long password 1234567890!@#$%^&*()_+=-This is a really long string to do a test to encode a really long password 1234567890!@#$%^&*()_+=-This is a really long string to do a test to encode a really long password 1234567890!@#$%^&*()_+=-";
         String encodedPwd = passwordManager.getEncodedPassword(rawPassword);
         assertNotNull(encodedPwd);
     }
 
     @Test
-    void callToPasswordsMatchReturnsTrueWhenTheCorrectPasswordIsSent() {
+    void passwordsMatch_ReturnsTrue_WhenTheCorrectPasswordIsSent() {
         String rawPassword = "ThePassword123!@#";
         String encodedPwd = passwordManager.getEncodedPassword(rawPassword);
         Assertions.assertTrue(passwordManager.passwordsMatch(rawPassword, encodedPwd));
     }
 
     @Test
-    void callToPasswordsMatchReturnsFalseWhenTheIncorrectPasswordIsSent() {
+    void passwordsMatch_ReturnsFalse_WhenTheIncorrectPasswordIsSent() {
         String rawPassword = "ThePassword123!@#";
         String wrongPassword = "ThePassword321!@#";
         String encodedPwd = passwordManager.getEncodedPassword(rawPassword);

@@ -23,5 +23,4 @@ public class PasswordManager {
         return encoder.matches(rawPassword, hashedPassword);
     }
 
-
 }
