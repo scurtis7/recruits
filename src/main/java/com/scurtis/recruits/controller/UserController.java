@@ -1,6 +1,9 @@
 package com.scurtis.recruits.controller;
 
+import com.scurtis.recruits.dto.Session;
 import com.scurtis.recruits.dto.SiteUser;
+import com.scurtis.recruits.exceptions.InvalidTokenException;
+import com.scurtis.recruits.service.SessionService;
 import com.scurtis.recruits.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
+    private final SessionService sessionService;
 
     @ResponseBody
     @PostMapping("api/user")
@@ -29,6 +34,19 @@ public class UserController {
         log.debug("createUserAccount() method called");
         SiteUser user = userService.saveUser(siteUser);
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @PostMapping("api/login")
+    public ResponseEntity<Session> loginUser(@RequestHeader String authorization) {
+        log.debug("loginUser() method called");
+        try {
+            Session session = sessionService.login(authorization);
+            return new ResponseEntity<>(session, HttpStatus.OK);
+        } catch (InvalidTokenException invalidTokenException) {
+            log.error("InvalidTokenException: " + invalidTokenException.getMessage());
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
 }

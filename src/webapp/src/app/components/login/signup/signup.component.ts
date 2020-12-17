@@ -25,11 +25,7 @@ export class SignupComponent implements OnInit {
   password2Error = false;
   password2ErrorMsg = '';
 
-
   userAdded = false;
-  // displayErrorMsg = false;
-
-  // errorMsg = '';
 
   constructor(private userService: UserService) {
   }

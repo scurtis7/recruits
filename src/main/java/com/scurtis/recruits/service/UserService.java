@@ -40,9 +40,10 @@ public class UserService {
         return dataAccess.findUserByUsername(username) != null;
     }
 
-//    public boolean login(String username, String password) {
-//        SiteUser user = dataAccess
-//    }
-
+    public boolean login(String username, String password) {
+        log.debug("login: " + username);
+        SiteUser user = dataAccess.findUserByUsername(username);
+        return passwordManager.passwordsMatch(password, user.getPassword());
+    }
 
 }

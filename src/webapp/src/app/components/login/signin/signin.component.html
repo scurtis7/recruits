@@ -12,20 +12,20 @@
   <div class="row">
     <div class="col">
       <label>
-        <input type="text" class="form-control" placeholder="Username" #username>
+        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username">
       </label>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <label>
-        <input type="password" class="form-control" placeholder="Password" #password>
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password">
       </label>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <button type="button" title="Signin" class="btn btn-primary">
+      <button type="button" title="Signin" class="btn btn-primary" (click)="loginUser()">
         Sign In
       </button>
     </div>
