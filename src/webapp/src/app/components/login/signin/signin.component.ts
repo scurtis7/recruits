@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../service/user.service';
-import { SiteUser } from '../../../model/site-user';
+import { SessionService } from '../../../service/session.service';
 
 @Component({
   selector: 'app-signin',
@@ -11,8 +11,10 @@ export class SigninComponent implements OnInit {
 
   username = '';
   password = '';
+  userLoginFailed = false;
+  userLoginErrorMsg = '';
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
@@ -23,17 +25,17 @@ export class SigninComponent implements OnInit {
       .subscribe(
         session => {
           console.log('User successfully logged in');
+          this.sessionService.session = session;
+          this.userLoginFailed = false;
         },
         err => {
           console.log('An error occurred logging in -> ' + err.message);
-          // this.userAdded = false;
-          // this.usernameError = true;
-          // this.usernameErrorMsg = 'This username is already taken, please select another';
+          this.userLoginFailed = true;
+          this.userLoginErrorMsg = 'User login failed';
         },
-        () => console.log('HTTP Request completed')
+        () => console.log('User login completed')
       );
   }
-
 
 
 }
