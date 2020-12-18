@@ -24,5 +24,6 @@ public class Session {
     private Integer id;
     private LocalDateTime created;
     private Integer expiration;
+    private String username;
 
 }

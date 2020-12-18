@@ -40,7 +40,9 @@ public class SessionService {
         Session session = new Session();
         session.setCreated(LocalDateTime.now());
         session.setExpiration(30);
+        session.setUsername(username);
 
+        repository.removeSession(username);
         return repository.save(session);
     }
 
