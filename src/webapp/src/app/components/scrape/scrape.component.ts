@@ -4,6 +4,8 @@ import { Player247 } from '../../model/player247';
 import { College } from '../../model/college';
 import { ScraperService } from '../../service/scraper.service';
 import { CollegeService } from '../../service/college.service';
+import { SessionService } from '../../service/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scrape',
@@ -16,10 +18,14 @@ export class ScrapeComponent implements OnInit {
   dataSource = new MatTableDataSource<Player247>();
   colleges: College[] = [];
 
-  constructor(private scraperService: ScraperService, private collegeService: CollegeService) {
+  constructor(private scraperService: ScraperService, private collegeService: CollegeService,
+              private sessionService: SessionService, private router: Router) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (!this.sessionService.checkSession()) {
+      this.router.navigate(['/signin']);
+    }
     // this.players = [
     //   {siteId:"siteId", name:"name", position: "position", height:"height", weight:"weight", homeTown:"homeTown", highSchool:"highSchool", year:"year", compositeRank:"cRank", rankNational:"nRank", rankPosition:"pRank", rankState:"sRank", stars:"stars", link:"link"}
     // ]
@@ -32,14 +38,14 @@ export class ScrapeComponent implements OnInit {
     this.loadAllColleges();
   }
 
-  loadAllColleges() {
+  loadAllColleges(): void {
     this.collegeService.getAllColleges()
       .subscribe(result => {
         this.colleges = result;
       });
   }
 
-  scrape(college: string, year: string) {
+  scrape(college: string, year: string): void {
     console.log('Scrape 247 Season: college -> ' + college + '  year -> ' + year);
     this.scraperService.scrape(college, year)
       .subscribe(result => {

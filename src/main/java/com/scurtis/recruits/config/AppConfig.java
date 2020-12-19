@@ -1,8 +1,10 @@
 package com.scurtis.recruits.config;
 
 import com.scurtis.recruits.dto.CollegeRepository;
+import com.scurtis.recruits.dto.SessionRepository;
 import com.scurtis.recruits.dto.SiteUserRepository;
 import com.scurtis.recruits.service.PasswordManager;
+import com.scurtis.recruits.service.SessionService;
 import com.scurtis.recruits.service.UserService;
 import com.scurtis.recruits.storage.CollegeDataAccess;
 import com.scurtis.recruits.storage.SiteUserDataAccess;
@@ -54,6 +56,11 @@ public class AppConfig {
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SessionService sessionService(UserService userService, SessionRepository repository) {
+        return new SessionService(userService, repository);
     }
 
 }
