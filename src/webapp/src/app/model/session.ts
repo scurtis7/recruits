@@ -4,12 +4,14 @@ export class Session {
   created: string;
   expiration: number;
   username: string;
+  role: number;
 
-  constructor(id: string, created: string, expiration: number, username: string) {
+  constructor(id: string, created: string, expiration: number, username: string, role: number) {
     this.id = id;
     this.created = created;
     this.expiration = expiration;
     this.username = username;
+    this.role = role;
   }
 
 }

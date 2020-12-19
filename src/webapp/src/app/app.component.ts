@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   title = 'Recruits';
+  isAdmin = false;
 
   constructor(private sessionService: SessionService, private router: Router) {
+    this.isAdmin = sessionService.isAdmin();
   }
 
   ngOnInit(): void {

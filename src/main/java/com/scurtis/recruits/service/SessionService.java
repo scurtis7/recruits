@@ -41,6 +41,8 @@ public class SessionService {
         session.setCreated(LocalDateTime.now());
         session.setExpiration(30);
         session.setUsername(username);
+        // todo: get the role from the user
+        session.setRole(1);
 
         repository.removeSession(username);
         return repository.save(session);
