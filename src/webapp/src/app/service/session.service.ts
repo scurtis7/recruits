@@ -20,4 +20,11 @@ export class SessionService {
     return this.session !== undefined;
   }
 
+  isAdmin(): boolean {
+    if (this.checkSession() && this.session.role === 0) {
+      return true;
+    }
+    return false;
+  }
+
 }

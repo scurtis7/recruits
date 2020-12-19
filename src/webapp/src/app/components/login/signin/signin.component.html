@@ -23,6 +23,16 @@
       </label>
     </div>
   </div>
+  <div class="row" *ngIf="userLoginFailed">
+    <div class="col">
+      <span class="error-message">{{userLoginErrorMsg}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span class="error-message">&nbsp;</span>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
       <button type="button" title="Signin" class="btn btn-primary" (click)="loginUser()">

@@ -12,9 +12,6 @@ export class AboutComponent implements OnInit {
   constructor(private sessionService: SessionService, private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.sessionService.checkSession()) {
-      this.router.navigate(['/signin']);
-    }
   }
 
 }

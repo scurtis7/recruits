@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../service/user.service';
 import { SessionService } from '../../../service/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -14,7 +15,7 @@ export class SigninComponent implements OnInit {
   userLoginFailed = false;
   userLoginErrorMsg = '';
 
-  constructor(private userService: UserService, private sessionService: SessionService) {
+  constructor(private userService: UserService, private sessionService: SessionService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,11 +28,12 @@ export class SigninComponent implements OnInit {
           console.log('User successfully logged in');
           this.sessionService.session = session;
           this.userLoginFailed = false;
+          this.router.navigate(['/']);
         },
         err => {
           console.log('An error occurred logging in -> ' + err.message);
           this.userLoginFailed = true;
-          this.userLoginErrorMsg = 'User login failed';
+          this.userLoginErrorMsg = 'Your username or password were not recognized';
         },
         () => console.log('User login completed')
       );
