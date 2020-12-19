@@ -3,6 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ScraperService } from '../../service/scraper.service';
 import { Player247 } from '../../model/player247';
 import { MatSort } from '@angular/material/sort';
+import { SessionService } from '../../service/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-players',
@@ -16,10 +18,13 @@ export class PlayersComponent implements AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private scraperService: ScraperService) {
+  constructor(private scraperService: ScraperService, private sessionService: SessionService, private router: Router) {
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
+    if (!this.sessionService.checkSession()) {
+      this.router.navigate(['/signin']);
+    }
     console.log('Get Players');
     this.scraperService.getPlayers()
       .subscribe(result => {

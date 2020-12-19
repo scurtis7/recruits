@@ -16,4 +16,8 @@ export class SessionService {
     this.theSession = newSession;
   }
 
+  checkSession(): boolean {
+    return this.session !== undefined;
+  }
+
 }
