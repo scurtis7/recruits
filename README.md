@@ -1,6 +1,6 @@
 ![Build & Test](https://github.com/scurtis7/recruits/workflows/Build%20&%20Test/badge.svg)
 
-![GitHub Workflow Status](https://github.com/scurtis7/recruits/build-test?style=plastic)
+![GitHub Workflow Status](https://github.com/scurtis7/recruits/workflows/build-test?style=plastic)
 
 # Recruits
 
