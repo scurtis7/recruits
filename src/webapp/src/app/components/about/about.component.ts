@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../../service/session.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -9,7 +7,8 @@ import { Router } from '@angular/router';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private sessionService: SessionService, private router: Router) { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
