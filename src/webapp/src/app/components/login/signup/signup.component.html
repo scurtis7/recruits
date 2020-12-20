@@ -69,6 +69,17 @@
     </div>
   </div>
 
+<!--  college preference -->
+  <div class="row">
+    <div class="col">
+      <h4><span class="badge badge-info">College Preference</span></h4>
+      <select class="browser-default custom-select select-college w-25" [(ngModel)]="college">
+        <option *ngFor="let college of colleges" value='{{college.siteName}}'>{{college.displayName}}</option>
+      </select>
+    </div>
+  </div>
+
+
   <div class="row" *ngIf="userAdded">
     <div class="col">
       <span class="success-message">User {{username}} added successfully!&nbsp;&nbsp;&nbsp;You can now </span>

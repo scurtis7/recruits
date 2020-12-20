@@ -2,6 +2,7 @@ package com.scurtis.recruits.controller;
 
 import com.scurtis.recruits.dto.Session;
 import com.scurtis.recruits.dto.SiteUser;
+import com.scurtis.recruits.exceptions.FailedLoginException;
 import com.scurtis.recruits.exceptions.InvalidTokenException;
 import com.scurtis.recruits.service.SessionService;
 import com.scurtis.recruits.service.UserService;
@@ -43,8 +44,8 @@ public class UserController {
         try {
             Session session = sessionService.login(authorization);
             return new ResponseEntity<>(session, HttpStatus.OK);
-        } catch (InvalidTokenException invalidTokenException) {
-            log.error("InvalidTokenException: " + invalidTokenException.getMessage());
+        } catch (InvalidTokenException | FailedLoginException exception) {
+            log.error("Exception logging in: " + exception.getMessage());
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
