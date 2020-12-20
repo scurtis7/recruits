@@ -1,8 +1,5 @@
 ![Build & Test](https://github.com/scurtis7/recruits/workflows/Build%20&%20Test/badge.svg)
 
-![Build & Test](https://github.com/scurtis7/recruits/workflows/build-test/badge.svg)
-
-
 # Recruits
 
 This application is my personal project to keep track of college football recruits and players.  This is a spring boot
