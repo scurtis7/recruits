@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../service/user.service';
 import { SiteUser } from '../../../model/site-user';
+import { CollegeService } from '../../../service/college.service';
+import { College } from '../../../model/college';
 
 @Component({
   selector: 'app-signup',
@@ -25,17 +27,29 @@ export class SignupComponent implements OnInit {
   password2Error = false;
   password2ErrorMsg = '';
 
+  colleges: College[] = [];
+  college = '';
+
   userAdded = false;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private collegeService: CollegeService) {
   }
 
   ngOnInit(): void {
+    this.loadAllColleges();
+  }
+
+  loadAllColleges(): void {
+    this.collegeService.getAllColleges()
+      .subscribe(result => {
+        this.colleges = result;
+        this.college = this.colleges[0].siteName;
+      });
   }
 
   createSiteUser(): void {
-    console.log('name:' + this.fullname + '   username:' + this.username + '   password:' + this.password + '   password2:' + this.password2);
-    this.userService.createUser(new SiteUser(this.fullname, this.username, this.password))
+    console.log('name:' + this.fullname + '   username:' + this.username + '   password:' + this.password + '   password2:' + this.password2 + '   college:' + this.college);
+    this.userService.createUser(new SiteUser(this.fullname, this.username, this.password, this.college))
       .subscribe(
         user => {
           console.log('User ' + user.fullname + ' was added');

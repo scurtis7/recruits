@@ -34,9 +34,6 @@ public class SessionService {
         String username = split[0];
         String password = split[1];
 
-//        if (!userService.login(username, password)) {
-//            throw new InvalidTokenException("User login failed");
-//        }
         SiteUser user = userService.login(username, password);
         Session session = new Session();
         session.setCreated(LocalDateTime.now());

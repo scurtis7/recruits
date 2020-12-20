@@ -10,10 +10,8 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
   title = 'Recruits';
-  isAdmin = false;
 
   constructor(private sessionService: SessionService, private router: Router) {
-    this.isAdmin = sessionService.isAdmin();
   }
 
   ngOnInit(): void {
@@ -21,5 +19,10 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/signin']);
     }
   }
+
+  isAdmin(): boolean {
+    return this.sessionService.isAdmin();
+  }
+
 
 }
