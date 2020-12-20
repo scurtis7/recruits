@@ -2,6 +2,7 @@ package com.scurtis.recruits.service;
 
 import com.scurtis.recruits.dto.Session;
 import com.scurtis.recruits.dto.SessionRepository;
+import com.scurtis.recruits.dto.SiteUser;
 import com.scurtis.recruits.exceptions.InvalidTokenException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,16 +34,16 @@ public class SessionService {
         String username = split[0];
         String password = split[1];
 
-        if (!userService.login(username, password)) {
-            throw new InvalidTokenException("User login failed");
-        }
-
+//        if (!userService.login(username, password)) {
+//            throw new InvalidTokenException("User login failed");
+//        }
+        SiteUser user = userService.login(username, password);
         Session session = new Session();
         session.setCreated(LocalDateTime.now());
         session.setExpiration(30);
         session.setUsername(username);
-        // todo: get the role from the user
-        session.setRole(1);
+        session.setRole(user.getRole());
+        session.setCollege(user.getCollege());
 
         repository.removeSession(username);
         return repository.save(session);

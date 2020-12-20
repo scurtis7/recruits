@@ -3,6 +3,7 @@ package com.scurtis.recruits.service;
 import com.scurtis.recruits.dto.Role;
 import com.scurtis.recruits.dto.SiteUser;
 import com.scurtis.recruits.exceptions.DuplicateUsernameException;
+import com.scurtis.recruits.exceptions.FailedLoginException;
 import com.scurtis.recruits.storage.SiteUserDataAccess;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,10 +41,14 @@ public class UserService {
         return dataAccess.findUserByUsername(username) != null;
     }
 
-    public boolean login(String username, String password) {
+    public SiteUser login(String username, String password) {
         log.debug("login: " + username);
         SiteUser user = dataAccess.findUserByUsername(username);
-        return passwordManager.passwordsMatch(password, user.getPassword());
+        if (passwordManager.passwordsMatch(password, user.getPassword())) {
+            return user;
+        } else {
+            throw new FailedLoginException("User passwords don't match");
+        }
     }
 
 }

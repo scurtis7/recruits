@@ -25,6 +25,7 @@ public class Session {
     private LocalDateTime created;
     private Integer expiration;
     private String username;
-    private Integer role;
+    private Role role;
+    private String college;
 
 }
