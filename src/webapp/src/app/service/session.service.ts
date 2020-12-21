@@ -17,11 +17,15 @@ export class SessionService {
   }
 
   checkSession(): boolean {
-    return this.session !== undefined;
+    return this.session !== undefined && this.session.id !== '';
   }
 
   isAdmin(): boolean {
     return this.checkSession() && this.session.role === 'ADMINISTRATOR';
+  }
+
+  signOut(): void {
+    this.session = new Session('', '', 0, '', '', '');
   }
 
 }
