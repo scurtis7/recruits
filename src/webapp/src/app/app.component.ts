@@ -24,5 +24,13 @@ export class AppComponent implements OnInit {
     return this.sessionService.isAdmin();
   }
 
+  loggedIn(): boolean {
+    return this.sessionService.checkSession();
+  }
+
+  signOut(): void {
+    this.sessionService.signOut();
+    this.router.navigate(['/signin']);
+  }
 
 }
