@@ -14,6 +14,7 @@ import { PlayersComponent } from './components/players/players.component';
 import { ScrapeComponent } from './components/scrape/scrape.component';
 import { SignupComponent } from './components/login/signup/signup.component';
 import { FormsModule } from '@angular/forms';
+import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     PlayersComponent,
     ScrapeComponent,
     SignupComponent,
+    ChangePasswordComponent,
   ],
     imports: [
         BrowserModule,

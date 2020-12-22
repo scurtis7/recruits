@@ -5,6 +5,9 @@
 This application is my personal project to keep track of college football recruits and players.  This is a spring boot
 angular application using a postgresql database.
 
+## Version 0.5.0
+Add Change Password functionality
+
 ## Version 0.4.0
 Add About information.
 
