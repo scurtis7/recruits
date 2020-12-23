@@ -1,5 +1,6 @@
 package com.scurtis.recruits.controller;
 
+import com.scurtis.recruits.dto.ChangePassword;
 import com.scurtis.recruits.dto.Session;
 import com.scurtis.recruits.dto.SiteUser;
 import com.scurtis.recruits.exceptions.FailedLoginException;
@@ -48,6 +49,14 @@ public class UserController {
             log.error("Exception logging in: " + exception.getMessage());
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
+    }
+
+    @ResponseBody
+    @PostMapping("api/changePassword")
+    public ResponseEntity<SiteUser> changePassword(@RequestBody ChangePassword changePassword) {
+        log.debug("changePassword() method called");
+        SiteUser user = userService.changePassword(changePassword);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 }

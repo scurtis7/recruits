@@ -5,6 +5,7 @@ import { ScrapeComponent } from './components/scrape/scrape.component';
 import { AboutComponent } from './components/about/about.component';
 import { SigninComponent } from './components/login/signin/signin.component';
 import { SignupComponent } from './components/login/signup/signup.component';
+import { ChangePasswordComponent } from './components/login/change-password/change-password.component';
 
 const routes: Routes = [
   {path: '', component: PlayersComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'scrape', component: ScrapeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'signin', component: SigninComponent},
-  {path: 'signup', component: SignupComponent}
+  {path: 'signup', component: SignupComponent},
+  {path: 'changepassword', component: ChangePasswordComponent}
 ];
 
 @NgModule({

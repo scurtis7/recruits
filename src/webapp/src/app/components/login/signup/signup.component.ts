@@ -105,11 +105,11 @@ export class SignupComponent implements OnInit {
 
   private checkSpecialCharacter(): boolean {
     return this.password.includes('!') || this.password.includes('@') || this.password.includes('#')
-      || this.password.includes('!$') || this.password.includes('%') || this.password.includes('^')
+      || this.password.includes('$') || this.password.includes('%') || this.password.includes('^')
       || this.password.includes('&') || this.password.includes('*') || this.password.includes('(')
       || this.password.includes(')') || this.password.includes('{') || this.password.includes('}')
       || this.password.includes('[') || this.password.includes(']') || this.password.includes('=')
-      || this.password.includes('+') || this.password.includes('|') || this.password.includes('?');
+      || this.password.includes('+') || this.password.includes('?') && !this.password.includes('|');
   }
 
   validatePassword2(): void {

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SiteUser } from '../model/site-user';
 import { Observable } from 'rxjs';
 import { Session } from '../model/session';
+import { ChangePassword } from '../model/change-password';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,13 @@ export class UserService {
 
     return this.httpClient.post<Session>(url, {}, httpOptions);
   }
+
+  changePassword(user: ChangePassword): Observable<SiteUser> {
+    const url = 'api/changePassword';
+    console.log('changePassword url -> ' + url);
+    return this.httpClient.post<SiteUser>(url, user, this.httpOptions);
+  }
+
 
   /**
    * Handle Http operation that failed.
