@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../service/user.service';
+import { ChangePassword } from '../../../model/change-password';
+import { SiteUser } from '../../../model/site-user';
 
 @Component({
   selector: 'app-change-password',
@@ -27,8 +29,22 @@ export class ChangePasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changePassord(): void {
-
+  changePassword(): void {
+    console.log('changePassword()  username:' + this.oldUsername + '   old password:' + this.oldPassword + '   new password' + this.newPassword);
+    this.userService.changePassword(new ChangePassword(this.oldUsername, this.oldPassword, this.newPassword))
+      .subscribe(
+        user => {
+          console.log('Password changed successfully');
+          this.passwordChanged = true;
+        },
+        err => {
+          console.log('An error ocurred -> ' + err.message);
+          this.passwordChanged = false;
+          this.newPassword2Error = true;
+          this.newPassword2ErrorMsg = 'Unable to change password';
+        },
+        () => console.log('HTTP Request completed')
+      );
   }
 
   validatePassword(): void {
@@ -68,6 +84,5 @@ export class ChangePasswordComponent implements OnInit {
       this.newPassword2Error = false;
     }
   }
-
 
 }
