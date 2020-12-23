@@ -1,5 +1,6 @@
 package com.scurtis.recruits.service;
 
+import com.scurtis.recruits.dto.ChangePassword;
 import com.scurtis.recruits.dto.Role;
 import com.scurtis.recruits.dto.SiteUser;
 import com.scurtis.recruits.exceptions.DuplicateUsernameException;
@@ -46,6 +47,18 @@ public class UserService {
         SiteUser user = dataAccess.findUserByUsername(username);
         if (passwordManager.passwordsMatch(password, user.getPassword())) {
             return user;
+        } else {
+            throw new FailedLoginException("User passwords don't match");
+        }
+    }
+
+    public SiteUser changePassword(ChangePassword changePassword) {
+        log.debug("changePassword() method called");
+        SiteUser user = dataAccess.findUserByUsername(changePassword.getOldUsername());
+        if (passwordManager.passwordsMatch(changePassword.getOldPassword(), user.getPassword())) {
+            String hashedPassword = passwordManager.getEncodedPassword(changePassword.getNewPassword());
+            user.setPassword(hashedPassword);
+            return dataAccess.saveUserAccount(user);
         } else {
             throw new FailedLoginException("User passwords don't match");
         }

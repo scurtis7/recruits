@@ -1,11 +1,11 @@
 export class ChangePassword {
 
-  username: string;
+  oldUsername: string;
   oldPassword: string;
   newPassword: string;
 
-  constructor(username: string, oldPassword: string, newPassword: string) {
-    this.username = username;
+  constructor(oldUsername: string, oldPassword: string, newPassword: string) {
+    this.oldUsername = oldUsername;
     this.oldPassword = oldPassword;
     this.newPassword = newPassword;
   }

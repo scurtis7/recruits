@@ -18,12 +18,6 @@ public class SiteUserDataAccess {
 
     public SiteUser saveUserAccount(SiteUser siteUser) {
         return repository.save(siteUser);
-//        try {
-//            return repository.save(siteUser);
-//        } catch (DataIntegrityViolationException integrityException) {
-//            log.error(integrityException.getMessage());
-//            throw new DuplicateUsernameException("The username must be unique", integrityException);
-//        }
     }
 
     public SiteUser findUserByUsername(String username) {

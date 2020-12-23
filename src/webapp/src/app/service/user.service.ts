@@ -38,10 +38,10 @@ export class UserService {
     return this.httpClient.post<Session>(url, {}, httpOptions);
   }
 
-  changePassword(user: ChangePassword): Observable<ChangePassword> {
+  changePassword(user: ChangePassword): Observable<SiteUser> {
     const url = 'api/changePassword';
     console.log('changePassword url -> ' + url);
-    return this.httpClient.post<ChangePassword>(url, user, this.httpOptions);
+    return this.httpClient.post<SiteUser>(url, user, this.httpOptions);
   }
 
 

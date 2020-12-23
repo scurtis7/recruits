@@ -34,7 +34,7 @@ export class ChangePasswordComponent implements OnInit {
     this.userService.changePassword(new ChangePassword(this.oldUsername, this.oldPassword, this.newPassword))
       .subscribe(
         user => {
-          console.log('Password changed successfully');
+          console.log('Password for ' + user.username + ' changed successfully');
           this.passwordChanged = true;
         },
         err => {
