@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 /**
  * Author: Steve Curtis
@@ -36,6 +37,7 @@ public class SessionService {
 
         SiteUser user = userService.login(username, password);
         Session session = new Session();
+        session.setId(getSessionId());
         session.setCreated(LocalDateTime.now());
         session.setExpiration(30);
         session.setUsername(username);
@@ -44,6 +46,23 @@ public class SessionService {
 
         repository.removeSession(username);
         return repository.save(session);
+    }
+
+    private Integer getSessionId() {
+        boolean finished = false;
+        int id = 0;
+        while (!finished) {
+            id = getRandomNumber();
+            if (!repository.existsById(id)) {
+                finished = true;
+            }
+        }
+        return id;
+    }
+
+    private int getRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(999999999);
     }
 
 }

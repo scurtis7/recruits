@@ -20,7 +20,6 @@ import java.time.LocalDateTime;
 public class Session {
 
     @Id
-    @GeneratedValue(generator = "session_id_seq")
     private Integer id;
     private LocalDateTime created;
     private Integer expiration;
