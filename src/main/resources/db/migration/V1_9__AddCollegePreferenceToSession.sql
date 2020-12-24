@@ -1,2 +1,0 @@
-
-ALTER TABLE session ADD COLUMN college VARCHAR;

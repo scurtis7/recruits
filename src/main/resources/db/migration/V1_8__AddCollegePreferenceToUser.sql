@@ -1,2 +1,0 @@
-
-ALTER TABLE site_user ADD COLUMN college VARCHAR;
