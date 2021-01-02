@@ -6,41 +6,12 @@
   text-align: center;
 }
 
-.btn-primary {
-  background-color: #3A4A4D;
-  color: #cfd8dc;
-  border-color: #cfd8dc;
-  width: 180px;
-}
-
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:focus,
-.btn-primary:active:focus {
-  background-color: #cfd8dc !important;
-  color: #3A4A4D;
-  border-color: #3A4A4D;
-}
-
-.btn-primary-outline {
-  color: #cfd8dc;
-}
-
-.btn-primary-outline:hover,
-.btn-primary-outline:active,
-.btn-primary-outline:focus,
-.btn-primary-outline:active:focus {
-  background-color: #cfd8dc !important;
-  color: #3A4A4D;
-  border-color: #3A4A4D;
-}
-
 .success-message {
-  color: #9de1fe;
+  color: #484848;
   font-weight: bold;
   font-size: medium;
 }
 
 .error-message {
-  color: #EC7063;
+  color: crimson;
 }

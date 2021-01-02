@@ -1,6 +1,7 @@
 
 .navlink {
   text-decoration: none;
+  color: #b8c6cc;
 }
 
 .navlink:hover,
@@ -8,4 +9,13 @@
 .navlink:active,
 .navlink:active:focus {
   text-decoration: underline;
+  color: #cfd8dc;
+}
+
+.navigation-bar {
+  background-color: #54686a;
+}
+
+.navbar-brand {
+  color: #b8c6cc;
 }

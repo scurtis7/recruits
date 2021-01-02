@@ -6,22 +6,6 @@
   text-align: center;
 }
 
-.btn-primary {
-  background-color: #3A4A4D;
-  color: #cfd8dc;
-  border-color: #cfd8dc;
-  width: 180px;
-}
-
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:focus,
-.btn-primary:active:focus {
-  background-color: #cfd8dc !important;
-  color: #3A4A4D;
-  border-color: #3A4A4D;
-}
-
 .error-message {
-  color: #EC7063;
+  color: crimson;
 }
