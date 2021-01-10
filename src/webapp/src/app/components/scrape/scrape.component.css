@@ -27,3 +27,15 @@
   margin-left: 10px;
   margin-bottom: 5px;
 }
+
+.error-message {
+  color: crimson;
+}
+
+.error-row {
+  margin-bottom: 10px;
+}
+
+.error-col {
+  margin-left: 30px;
+}
