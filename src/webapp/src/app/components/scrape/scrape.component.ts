@@ -17,6 +17,10 @@ export class ScrapeComponent implements OnInit {
   displayedColumns: string[] = ['year', 'name', 'position', 'height', 'weight', 'compositeRank', 'rankNational', 'rankPosition', 'rankState', 'stars'];
   dataSource = new MatTableDataSource<Player247>();
   colleges: College[] = [];
+  selectedCollege: string = '';
+  selectedYear: string = '';
+  errorFound: boolean = false;
+  errorMsg: string = '';
 
   constructor(private scraperService: ScraperService, private collegeService: CollegeService,
               private sessionService: SessionService, private router: Router) {
@@ -36,6 +40,7 @@ export class ScrapeComponent implements OnInit {
     //   {id: 4, siteName: 'alabama', displayName: 'University of Alabama', conference: '', division: ''}
     // ];
     this.loadAllColleges();
+    this.selectedCollege = 'florida-state';
   }
 
   loadAllColleges(): void {
@@ -45,12 +50,19 @@ export class ScrapeComponent implements OnInit {
       });
   }
 
-  scrape(college: string, year: string): void {
-    console.log('Scrape 247 Season: college -> ' + college + '  year -> ' + year);
-    this.scraperService.scrape(college, year)
-      .subscribe(result => {
-        this.dataSource = new MatTableDataSource(result);
-      });
+  scrape(): void {
+    console.log('selected college: ' + this.selectedCollege)
+    console.log('   selected year: ' + this.selectedYear)
+    if (this.selectedYear === undefined || this.selectedYear === '') {
+      this.errorFound = true;
+      this.errorMsg = 'Please enter a year';
+    } else {
+      this.errorFound = false;
+      this.scraperService.scrape(this.selectedCollege, this.selectedYear)
+        .subscribe(result => {
+          this.dataSource = new MatTableDataSource(result);
+        });
+    }
   }
 
 }
