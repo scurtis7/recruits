@@ -1,11 +1,14 @@
 package com.scurtis.recruits.config;
 
 import com.scurtis.recruits.dto.CollegeRepository;
+import com.scurtis.recruits.dto.Player247Repository;
 import com.scurtis.recruits.dto.SessionRepository;
 import com.scurtis.recruits.dto.SiteUserRepository;
 import com.scurtis.recruits.service.PasswordManager;
 import com.scurtis.recruits.service.SessionService;
+import com.scurtis.recruits.service.Two47Scraper;
 import com.scurtis.recruits.service.UserService;
+import com.scurtis.recruits.service.WebScrapingService;
 import com.scurtis.recruits.storage.CollegeDataAccess;
 import com.scurtis.recruits.storage.SiteUserDataAccess;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -61,6 +64,16 @@ public class AppConfig {
     @Bean
     public SessionService sessionService(UserService userService, SessionRepository repository) {
         return new SessionService(userService, repository);
+    }
+
+    @Bean
+    public WebScrapingService webScrapingService() {
+        return new WebScrapingService();
+    }
+
+    @Bean
+    public Two47Scraper two47Scraper(WebScrapingService webScrapingService, Player247Repository repository) {
+        return new Two47Scraper(webScrapingService, repository);
     }
 
 }
