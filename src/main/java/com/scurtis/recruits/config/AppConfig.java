@@ -10,6 +10,7 @@ import com.scurtis.recruits.service.Two47Scraper;
 import com.scurtis.recruits.service.UserService;
 import com.scurtis.recruits.service.WebScrapingService;
 import com.scurtis.recruits.storage.CollegeDataAccess;
+import com.scurtis.recruits.storage.PlayerDataAccess;
 import com.scurtis.recruits.storage.SiteUserDataAccess;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -74,6 +75,11 @@ public class AppConfig {
     @Bean
     public Two47Scraper two47Scraper(WebScrapingService webScrapingService, Player247Repository repository) {
         return new Two47Scraper(webScrapingService, repository);
+    }
+
+    @Bean
+    public PlayerDataAccess playerDataAccess(Player247Repository player247Repository) {
+        return new PlayerDataAccess(player247Repository);
     }
 
 }
