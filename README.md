@@ -5,6 +5,12 @@
 This application is my personal project to keep track of college football recruits and players.  This is a spring boot
 angular application using a postgresql database.
 
+## Version 0.7.0
+Upgrade to JDK 11
+
+## Version 0.6.0
+Add scraper functionality
+
 ## Version 0.5.0
 Add Change Password functionality
 
@@ -23,7 +29,7 @@ and login with that user.
 
 ## Technologies
 - Spring Boot - `v2.4.0`
-- Java - `v1.8`
+- Java - `v11`
 - Angular - `v11.0.0`
 - Postgresql - `v12.2`
 - Gradle - `v6.7.1`
