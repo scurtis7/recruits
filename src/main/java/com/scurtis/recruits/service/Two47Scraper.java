@@ -128,7 +128,7 @@ public class Two47Scraper {
     }
 
     private Integer stringToInteger(String value) {
-        if (StringUtils.isEmpty(value) || value.equalsIgnoreCase("N/A")) {
+        if (StringUtils.hasText(value) || value.equalsIgnoreCase("N/A")) {
             return 0;
         } else {
             return Integer.valueOf(value);
