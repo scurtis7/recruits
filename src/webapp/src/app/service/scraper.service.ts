@@ -23,7 +23,7 @@ export class ScraperService {
   }
 
   getPlayers(): Observable<Player247[]> {
-    const url = `/recruit`;
+    const url = `/api/players`;
     return this.httpClient.get<Player247[]>(url).pipe(
       catchError(this.handleError<Player247[]>(`getPlayers`))
     );
