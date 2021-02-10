@@ -38,10 +38,6 @@ public class UserService {
         }
     }
 
-    public boolean doesUsernameExist(String username) {
-        return dataAccess.findUserByUsername(username) != null;
-    }
-
     public SiteUser login(String username, String password) {
         log.debug("login: " + username);
         SiteUser user = dataAccess.findUserByUsername(username);
