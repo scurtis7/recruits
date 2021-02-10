@@ -49,9 +49,7 @@ class SessionServiceTest {
 
     @Test
     void testLoginWithTokenMissingBearer() {
-        Exception exception = assertThrows(InvalidTokenException.class, () -> {
-            sessionService.login("bad token");
-        });
+        Exception exception = assertThrows(InvalidTokenException.class, () -> sessionService.login("bad token"));
         String expectedMessage = "The token should be a 'Bearer' token";
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
