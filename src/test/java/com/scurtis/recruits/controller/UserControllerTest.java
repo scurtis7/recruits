@@ -1,8 +1,10 @@
 package com.scurtis.recruits.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.scurtis.recruits.dto.ChangePassword;
 import com.scurtis.recruits.dto.Role;
 import com.scurtis.recruits.dto.SiteUser;
+import com.scurtis.recruits.exceptions.InvalidTokenException;
 import com.scurtis.recruits.service.SessionService;
 import com.scurtis.recruits.service.UserService;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,6 +17,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -35,14 +38,16 @@ class UserControllerTest {
     private SessionService sessionService;
 
     private static SiteUser user;
+    private static ChangePassword changePassword;
 
     @BeforeAll
     static void init() {
         user = getSiteUser();
+        changePassword = getChangePassword();
     }
 
     @Test
-    void createUserAccountSuccess() throws Exception {
+    void testCreateUserAccountReturns200OK() throws Exception {
         mockMvc.perform(post("/api/user")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(user)))
@@ -50,7 +55,7 @@ class UserControllerTest {
     }
 
     @Test
-    void createUserAccountWithBadContentTypeReturns415UnsupportedMediaType() throws Exception {
+    void testCreateUserAccountWithBadContentTypeReturns415UnsupportedMediaType() throws Exception {
         mockMvc.perform(post("/api/user")
                 .contentType("text/plain")
                 .content(objectMapper.writeValueAsString(user)))
@@ -58,10 +63,64 @@ class UserControllerTest {
     }
 
     @Test
-    void createUserAccountWithoutBodyReturns400BadRequest() throws Exception {
+    void testCreateUserAccountWithoutBodyReturns400BadRequest() throws Exception {
         mockMvc.perform(post("/api/user")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testLoginUserReturns200OK() throws Exception {
+        mockMvc.perform(post("/api/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("Authorization", "12345"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testLoginUserWithoutAuthorizationReturns400BadRequest() throws Exception {
+        mockMvc.perform(post("/api/login")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testLoginUserWithInvalidTokenReturns401Unauthorized() throws Exception {
+        doThrow(new InvalidTokenException("The token should include the username and password"))
+                .when(sessionService).login("12345");
+        mockMvc.perform(post("/api/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("Authorization", "12345"))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void testLoginUserWithBadContentTypeReturns415UnsupportedMediaType() throws Exception {
+        mockMvc.perform(post("/api/login")
+                .contentType("text/plain"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testChangePasswordReturns200OK() throws Exception {
+        mockMvc.perform(post("/api/changePassword")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(changePassword)))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testChangePasswordWithoutBodyReturns400BadRequest() throws Exception {
+        mockMvc.perform(post("/api/changePassword")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void testChangePasswordWithBadContentTypeReturns415UnsupportedMediaType() throws Exception {
+        mockMvc.perform(post("/api/changePassword")
+                .contentType("text/plain"))
+                .andExpect(status().isUnsupportedMediaType());
     }
 
     private static SiteUser getSiteUser() {
@@ -73,6 +132,14 @@ class UserControllerTest {
         user.setRole(Role.GUEST);
         user.setCollege("college");
         return user;
+    }
+
+    private static ChangePassword getChangePassword() {
+        ChangePassword changePassword = new ChangePassword();
+        changePassword.setOldUsername("old_user_name");
+        changePassword.setOldPassword("old_user_password");
+        changePassword.setNewPassword("new_user_password");
+        return changePassword;
     }
 
 

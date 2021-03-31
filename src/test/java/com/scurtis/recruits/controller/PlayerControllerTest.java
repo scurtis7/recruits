@@ -49,12 +49,10 @@ class PlayerControllerTest {
     @Test
     void testGetAllPlayersSuccess() throws Exception {
         mockMvc.perform(get("/api/players")
-                .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(getPlayers())))
                 .andExpect(status().isOk());
-//            .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk());
-//            .content(objectMapper.writeValueAsString(players)))
-//            .andExpect(status().isOk());
     }
 
     private static List<Player247> getPlayers() {
