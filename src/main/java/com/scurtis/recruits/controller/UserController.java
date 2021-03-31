@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -30,15 +29,12 @@ public class UserController {
     private final UserService userService;
     private final SessionService sessionService;
 
-    @ResponseBody
     @PostMapping("api/user")
-    public ResponseEntity<SiteUser> createUserAccount(@RequestBody SiteUser siteUser) {
+    public SiteUser createUserAccount(@RequestBody SiteUser siteUser) {
         log.debug("createUserAccount() method called");
-        SiteUser user = userService.saveUser(siteUser);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return userService.saveUser(siteUser);
     }
 
-    @ResponseBody
     @PostMapping("api/login")
     public ResponseEntity<Session> loginUser(@RequestHeader String authorization) {
         log.debug("loginUser() method called");
@@ -51,12 +47,10 @@ public class UserController {
         }
     }
 
-    @ResponseBody
     @PostMapping("api/changePassword")
-    public ResponseEntity<SiteUser> changePassword(@RequestBody ChangePassword changePassword) {
+    public SiteUser changePassword(@RequestBody ChangePassword changePassword) {
         log.debug("changePassword() method called");
-        SiteUser user = userService.changePassword(changePassword);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return userService.changePassword(changePassword);
     }
 
 }
