@@ -600,7 +600,7 @@ mat-row,mat-header-row,mat-footer-row,th.mat-header-cell,td.mat-cell,td.mat-foot
   background-color: #b8c6cc;
 }
 .main-page {
-  padding: 10px;
+  padding: 10px 10px 10px 30px;
 }
 .badge-info {
   background-color: #b8c6cc;

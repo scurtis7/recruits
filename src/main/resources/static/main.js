@@ -84,6 +84,22 @@ class PlayerService {
         const url = `/api/players/college/${college}/`;
         return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getPlayersByCollege`)));
     }
+    getYears(college) {
+        const url = `/api/distinct/years/college/${college}/`;
+        return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getYears`)));
+    }
+    getPositions(college) {
+        const url = `/api/distinct/positions/college/${college}/`;
+        return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getPositions`)));
+    }
+    getPlayersByCollegeAndYear(college, year) {
+        const url = `/api/players/college/${college}/year/${year}`;
+        return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getPlayersByCollegeAndYear`)));
+    }
+    getPlayersByCollegeAndPosition(college, position) {
+        const url = `/api/players/college/${college}/position/${position}`;
+        return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`getPlayersByCollegeAndPosition`)));
+    }
     /**
      * Handle Http operation that failed.
      * Let the app continue.
@@ -919,12 +935,6 @@ class ScraperService {
         console.log('scrape url -> ' + url);
         return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError(`Season: ${year}`)));
     }
-    // getPlayers(): Observable<Player247[]> {
-    //   const url = `/api/players`;
-    //   return this.httpClient.get<Player247[]>(url).pipe(
-    //     catchError(this.handleError<Player247[]>(`getPlayers`))
-    //   );
-    // }
     /**
      * Handle Http operation that failed.
      * Let the app continue.
@@ -1567,16 +1577,26 @@ class PlayersComponent {
         this.router = router;
         this.displayedColumns = ['year', 'name', 'position', 'height', 'weight', 'compositeRank', 'rankNational', 'rankPosition', 'rankState', 'stars'];
         this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"]();
+        this.years = [];
+        this.positions = [];
     }
     ngAfterViewInit() {
         if (!this.sessionService.checkSession()) {
             this.router.navigate(['/signin']);
         }
-        console.log('Get Players');
+        console.log('Get Players By College');
         this.playerService.getPlayersByCollege(this.sessionService.session.college)
             .subscribe(result => {
             this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](result);
             this.dataSource.sort = this.sort;
+        });
+        this.playerService.getYears(this.sessionService.session.college)
+            .subscribe(result => {
+            this.years = result;
+        });
+        this.playerService.getPositions(this.sessionService.session.college)
+            .subscribe(result => {
+            this.positions = result;
         });
     }
 }
