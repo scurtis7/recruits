@@ -1,24 +1,21 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {catchError} from 'rxjs/operators';
-import {Player247} from '../model/player247';
+import {Observable, of} from "rxjs";
+import {Player247} from "../model/player247";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ScraperService {
-
-  private baseUrl = 'api/scrape';
+export class PlayerService {
 
   constructor(private httpClient: HttpClient) {
   }
 
-  scrape(college: string, year: string): Observable<Player247[]> {
-    const url = `${this.baseUrl}/${college}/${year}`;
-    console.log('scrape url -> ' + url);
+  getPlayersByCollege(college: string): Observable<Player247[]> {
+    const url = `/api/players/college/${college}/`;
     return this.httpClient.get<Player247[]>(url).pipe(
-      catchError(this.handleError<Player247[]>(`Season: ${year}`))
+      catchError(this.handleError<Player247[]>(`getPlayersByCollege`))
     );
   }
 
@@ -38,5 +35,6 @@ export class ScraperService {
       return of(result as T);
     };
   }
+
 
 }
