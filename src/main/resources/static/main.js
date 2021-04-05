@@ -1603,8 +1603,8 @@ class PlayersComponent {
         this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"]();
         this.years = [];
         this.positions = [];
-        this.selectedYear = '';
-        this.selectedPosition = '';
+        this.selectedYear = 'Select Year';
+        this.selectedPosition = 'Select Position';
     }
     ngAfterViewInit() {
         if (!this.sessionService.checkSession()) {

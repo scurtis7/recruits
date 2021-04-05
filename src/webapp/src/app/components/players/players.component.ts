@@ -18,8 +18,8 @@ export class PlayersComponent implements AfterViewInit {
   years: String[] = [];
   positions: String[] = [];
 
-  selectedYear: string = '';
-  selectedPosition: string = '';
+  selectedYear: string = 'Select Year';
+  selectedPosition: string = 'Select Position';
 
   @ViewChild(MatSort) sort!: MatSort;
 

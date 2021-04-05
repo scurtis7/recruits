@@ -2,7 +2,9 @@ package com.scurtis.recruits.controller;
 
 import com.scurtis.recruits.dto.Player247;
 import com.scurtis.recruits.storage.PlayerDataAccess;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,13 +41,22 @@ public class PlayerController {
     }
 
     @GetMapping("/distinct/years/college/{college}/")
-    public List<Integer> getDistinctYearsByCollege(@PathVariable String college) {
-        return dataAccess.getDistinctYearsByCollege(college);
+    public List<String> getDistinctYearsByCollege(@PathVariable String college) {
+        List<String> years = new ArrayList<>();
+        years.add("Select Year");
+        years.addAll(dataAccess.getDistinctYearsByCollege(college)
+                .stream()
+                .map(String::valueOf)
+                .collect(Collectors.toList()));
+        return years;
     }
 
     @GetMapping("/distinct/positions/college/{college}/")
     public List<String> getDistinctPositionsByCollege(@PathVariable String college) {
-        return dataAccess.getDistinctPositionsByCollege(college);
+        List<String> positions = new ArrayList<>();
+        positions.add("Select Position");
+        positions.addAll(dataAccess.getDistinctPositionsByCollege(college));
+        return positions;
     }
 
 }
