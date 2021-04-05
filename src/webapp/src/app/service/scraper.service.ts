@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { Player247 } from '../model/player247';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, of} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import {Player247} from '../model/player247';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +19,6 @@ export class ScraperService {
     console.log('scrape url -> ' + url);
     return this.httpClient.get<Player247[]>(url).pipe(
       catchError(this.handleError<Player247[]>(`Season: ${year}`))
-    );
-  }
-
-  getPlayers(): Observable<Player247[]> {
-    const url = `/api/players`;
-    return this.httpClient.get<Player247[]>(url).pipe(
-      catchError(this.handleError<Player247[]>(`getPlayers`))
     );
   }
 
