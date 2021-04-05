@@ -18,6 +18,9 @@ export class PlayersComponent implements AfterViewInit {
   years: String[] = [];
   positions: String[] = [];
 
+  selectedYear: string = '';
+  selectedPosition: string = '';
+
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private playerService: PlayerService, private sessionService: SessionService, private router: Router) {
