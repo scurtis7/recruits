@@ -43,7 +43,7 @@ public class PlayerController {
     @GetMapping("/distinct/years/college/{college}/")
     public List<String> getDistinctYearsByCollege(@PathVariable String college) {
         List<String> years = new ArrayList<>();
-        years.add("Select Year");
+        years.add("All Years");
         years.addAll(dataAccess.getDistinctYearsByCollege(college)
                 .stream()
                 .map(String::valueOf)
@@ -54,7 +54,7 @@ public class PlayerController {
     @GetMapping("/distinct/positions/college/{college}/")
     public List<String> getDistinctPositionsByCollege(@PathVariable String college) {
         List<String> positions = new ArrayList<>();
-        positions.add("Select Position");
+        positions.add("All Positions");
         positions.addAll(dataAccess.getDistinctPositionsByCollege(college));
         return positions;
     }

@@ -18,8 +18,8 @@ export class PlayersComponent implements AfterViewInit {
   years: String[] = [];
   positions: String[] = [];
 
-  selectedYear: string = 'Select Year';
-  selectedPosition: string = 'Select Position';
+  selectedYear: string = 'All Years';
+  selectedPosition: string = 'All Positions';
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -44,6 +44,40 @@ export class PlayersComponent implements AfterViewInit {
       .subscribe(result => {
         this.positions = result;
       });
+  }
+
+  getByYear(): void {
+    if (this.selectedYear === 'All Years') {
+      this.playerService.getPlayersByCollege(this.sessionService.session.college)
+        .subscribe(result => {
+          this.dataSource = new MatTableDataSource(result);
+          this.dataSource.sort = this.sort;
+        });
+    } else {
+      this.selectedPosition = 'All Positions';
+      this.playerService.getPlayersByCollegeAndYear(this.sessionService.session.college, this.selectedYear)
+        .subscribe(result => {
+          this.dataSource = new MatTableDataSource(result);
+          this.dataSource.sort = this.sort;
+        });
+    }
+  }
+
+  getByPosition(): void {
+    if (this.selectedPosition === 'All Positions') {
+      this.playerService.getPlayersByCollege(this.sessionService.session.college)
+        .subscribe(result => {
+          this.dataSource = new MatTableDataSource(result);
+          this.dataSource.sort = this.sort;
+        });
+    } else {
+      this.selectedYear = 'All Years';
+      this.playerService.getPlayersByCollegeAndPosition(this.sessionService.session.college, this.selectedPosition)
+        .subscribe(result => {
+          this.dataSource = new MatTableDataSource(result);
+          this.dataSource.sort = this.sort;
+        });
+    }
   }
 
 }

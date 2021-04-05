@@ -2,10 +2,10 @@
   <h1><span class="badge badge-info">Players</span></h1>
   <div class="row">
     <div class="col">
-      <select class="browser-default custom-select select-dropdown w-25" [(ngModel)]="selectedYear">
+      <select class="browser-default custom-select select-dropdown w-25" [(ngModel)]="selectedYear" (change)="getByYear()">
         <option *ngFor="let year of years" value='{{year}}'>{{year}}</option>
       </select>
-      <select class="browser-default custom-select select-dropdown w-25" [(ngModel)]="selectedPosition">
+      <select class="browser-default custom-select select-dropdown w-25" [(ngModel)]="selectedPosition" (change)="getByPosition()">
         <option *ngFor="let position of positions" value='{{position}}'>{{position}}</option>
       </select>
     </div>

@@ -1603,8 +1603,8 @@ class PlayersComponent {
         this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"]();
         this.years = [];
         this.positions = [];
-        this.selectedYear = 'Select Year';
-        this.selectedPosition = 'Select Position';
+        this.selectedYear = 'All Years';
+        this.selectedPosition = 'All Positions';
     }
     ngAfterViewInit() {
         if (!this.sessionService.checkSession()) {
@@ -1625,6 +1625,40 @@ class PlayersComponent {
             this.positions = result;
         });
     }
+    getByYear() {
+        if (this.selectedYear === 'All Years') {
+            this.playerService.getPlayersByCollege(this.sessionService.session.college)
+                .subscribe(result => {
+                this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](result);
+                this.dataSource.sort = this.sort;
+            });
+        }
+        else {
+            this.selectedPosition = 'All Positions';
+            this.playerService.getPlayersByCollegeAndYear(this.sessionService.session.college, this.selectedYear)
+                .subscribe(result => {
+                this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](result);
+                this.dataSource.sort = this.sort;
+            });
+        }
+    }
+    getByPosition() {
+        if (this.selectedPosition === 'All Positions') {
+            this.playerService.getPlayersByCollege(this.sessionService.session.college)
+                .subscribe(result => {
+                this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](result);
+                this.dataSource.sort = this.sort;
+            });
+        }
+        else {
+            this.selectedYear = 'All Years';
+            this.playerService.getPlayersByCollegeAndPosition(this.sessionService.session.college, this.selectedPosition)
+                .subscribe(result => {
+                this.dataSource = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](result);
+                this.dataSource.sort = this.sort;
+            });
+        }
+    }
 }
 PlayersComponent.ɵfac = function PlayersComponent_Factory(t) { return new (t || PlayersComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_player_service__WEBPACK_IMPORTED_MODULE_3__["PlayerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_session_service__WEBPACK_IMPORTED_MODULE_4__["SessionService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"])); };
 PlayersComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PlayersComponent, selectors: [["app-players"]], viewQuery: function PlayersComponent_Query(rf, ctx) { if (rf & 1) {
@@ -1632,7 +1666,7 @@ PlayersComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
     } if (rf & 2) {
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.sort = _t.first);
-    } }, decls: 44, vars: 7, consts: [[1, "badge", "badge-info"], [1, "row"], [1, "col"], [1, "browser-default", "custom-select", "select-dropdown", "w-25", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["mat-table", "", "matSort", "", 1, "mat-elevation-z8", 3, "dataSource"], ["matColumnDef", "year"], ["mat-header-cell", "", "mat-sort-header", "", 4, "matHeaderCellDef"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "name"], ["matColumnDef", "position"], ["matColumnDef", "height"], ["matColumnDef", "weight"], ["matColumnDef", "compositeRank"], ["matColumnDef", "rankNational"], ["matColumnDef", "rankPosition"], ["matColumnDef", "rankState"], ["matColumnDef", "stars"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], [3, "value"], ["mat-header-cell", "", "mat-sort-header", ""], ["mat-cell", ""], ["mat-header-row", ""], ["mat-row", ""]], template: function PlayersComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, decls: 44, vars: 7, consts: [[1, "badge", "badge-info"], [1, "row"], [1, "col"], [1, "browser-default", "custom-select", "select-dropdown", "w-25", 3, "ngModel", "ngModelChange", "change"], [3, "value", 4, "ngFor", "ngForOf"], ["mat-table", "", "matSort", "", 1, "mat-elevation-z8", 3, "dataSource"], ["matColumnDef", "year"], ["mat-header-cell", "", "mat-sort-header", "", 4, "matHeaderCellDef"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "name"], ["matColumnDef", "position"], ["matColumnDef", "height"], ["matColumnDef", "weight"], ["matColumnDef", "compositeRank"], ["matColumnDef", "rankNational"], ["matColumnDef", "rankPosition"], ["matColumnDef", "rankState"], ["matColumnDef", "stars"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], [3, "value"], ["mat-header-cell", "", "mat-sort-header", ""], ["mat-cell", ""], ["mat-header-row", ""], ["mat-row", ""]], template: function PlayersComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 0);
@@ -1642,11 +1676,11 @@ PlayersComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "select", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PlayersComponent_Template_select_ngModelChange_6_listener($event) { return ctx.selectedYear = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PlayersComponent_Template_select_ngModelChange_6_listener($event) { return ctx.selectedYear = $event; })("change", function PlayersComponent_Template_select_change_6_listener() { return ctx.getByYear(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, PlayersComponent_option_7_Template, 2, 2, "option", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PlayersComponent_Template_select_ngModelChange_8_listener($event) { return ctx.selectedPosition = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function PlayersComponent_Template_select_ngModelChange_8_listener($event) { return ctx.selectedPosition = $event; })("change", function PlayersComponent_Template_select_change_8_listener() { return ctx.getByPosition(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, PlayersComponent_option_9_Template, 2, 2, "option", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
