@@ -5,6 +5,9 @@
 This application is my personal project to keep track of college football recruits and players.  This is a spring boot
 angular application using a postgresql database.
 
+## Version 0.8.0
+Add `year` & `position` drop downs to the player list
+
 ## Version 0.7.0
 Upgrade to JDK 11
 
