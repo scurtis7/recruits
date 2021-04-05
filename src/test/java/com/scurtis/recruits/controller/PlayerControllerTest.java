@@ -143,7 +143,7 @@ class PlayerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().json(objectMapper.writeValueAsString(years)));
+                .andExpect(content().json(objectMapper.writeValueAsString(getExpectedYears())));
     }
 
     @Test
@@ -170,7 +170,7 @@ class PlayerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().json(objectMapper.writeValueAsString(positions)));
+                .andExpect(content().json(objectMapper.writeValueAsString(getExpectedPositions())));
     }
 
     @Test
@@ -218,6 +218,16 @@ class PlayerControllerTest {
 
     private static List<String> getPositions() {
         return Stream.of("QB", "CB", "Running Back")
+                .collect(Collectors.toList());
+    }
+
+    private static List<String> getExpectedYears() {
+        return Stream.of("All Years", "2018", "2019", "2020", "2021", "2022")
+                .collect(Collectors.toList());
+    }
+
+    private static List<String> getExpectedPositions() {
+        return Stream.of("All Positions", "QB", "CB", "Running Back")
                 .collect(Collectors.toList());
     }
 
