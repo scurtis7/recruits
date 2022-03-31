@@ -95,7 +95,7 @@ public class Two47Scraper {
 
         Elements rankElements = doc.getElementsByClass("rank-block");
         if (rankElements != null) {
-            player.setCompositeRank(rankElements.first().text());
+            player.setCompositeRank(rankElements.first() != null ? rankElements.first().text() : "");
         }
 
         Element starsBlock = doc.getElementsByClass("stars-block").first();
